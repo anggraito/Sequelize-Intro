@@ -15,12 +15,15 @@ app.get('/',function(req, res){
 
 var Teacher = require('./models/teacher');
 var Subject = require('./models/subject');
+var Student = require('./models/students');
 
 
-const teacher = require('./routers/teachers')
-const subject = require('./routers/subjects')
+const teacher = require('./routers/teachers');
+const subject = require('./routers/subjects');
+const students = require('./routers/students');
 //
 app.use('/teachers', teacher);
 app.use('/subjects', subject);
+app.use('/Students', students);
 
 app.listen(3002);
