@@ -2,23 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <style>
-    table {
-      font-family:Comic Extrabold, sans-serif;
-      position: center;
-    }
-
-    td, th {
-      border: 1px solid #dddddd;
-      text-align: left;
-      padding: 1px;
-    }
-
-    tr:nth-child(even) {
-      background-color: #dddddd;
-    }
-  </style>
-  <title>Subject</title>
+  <title>Subject Page</title>
   </head>
 
   <body>
@@ -31,9 +15,9 @@
       <th>Subject Name</th>
       <th colspan='2'></th>
     </tr>
-    <% data_subject.forEach(subject =>{%>
+    <% data_subjects.forEach((subject, index )=>{%>
     <tr>
-      <td><%= subject.id %></td>
+      <td><%= index + 1 %></td>
       <td><%= subject.subject_name %></td>
     </tr>
       <%})%>

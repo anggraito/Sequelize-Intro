@@ -2,23 +2,8 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <style>
-    table {
-      font-family:Comic Extrabold, sans-serif;
-      position: center;
-    }
 
-    td, th {
-      border: 1px solid #dddddd;
-      text-align: left;
-      padding: 1px;
-    }
-
-    tr:nth-child(even) {
-      background-color: #dddddd;
-    }
-  </style>
-  <title>Teacher</title>
+  <title>Teacher Page</title>
   </head>
 
   <body>
@@ -33,7 +18,7 @@
       <th>Email</th>
       <th colspan='2'></th>
     </tr>
-    <% data_teacher.forEach(teacher =>{%>
+    <% data_teachers.forEach(teacher =>{%>
     <tr>
       <td><%= teacher.id %></td>
       <td><%= teacher.first_name %></td>

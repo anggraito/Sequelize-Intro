@@ -6,7 +6,7 @@ var dbModel = require('../models');
 theRout.get('/', function(req, res){
   dbModel.Subject.findAll()
   .then (function(rows){
-    res.render('Subjects', {data_subject: rows});
+    res.render('Subjects', {data_subjects: rows});
   });
 });
 
