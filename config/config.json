@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "anggraito",
+    "password": "bnm",
+    "database": "anggraito",
+    "host": "localhost",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "anggraito",
+    "password": "bnm",
+    "database": "anggraito",
+    "host": "localhost",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "anggraito",
+    "password": "bnm",
+    "database": "anggraito",
+    "host": "localhost",
+    "dialect": "postgres"
+  }
+}

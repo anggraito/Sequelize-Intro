@@ -16,13 +16,13 @@ ruut.get('/add', function(req, res){
 
 //add student req.body
 ruut.post('/add', function(req, res){
-  dbModel.Students.create(req.body)
+  dbModel.Students.create({first_name:req.body.first_name,last_name:req.body.last_name,email:req.body.email})
   .then( function(){
     res.redirect('/students');
   })
-  .catch(err =>{
-    res.render('studentsAdd',{title :'Add Students Data', errorMsg: err.message})
-  });
+  // .catch(err =>{
+  //   res.render('studentsAdd',{title :'Add Students Data', errorMsg: err.message})
+  // });
 });
 
 //edit form
@@ -34,21 +34,21 @@ ruut.get('/edit/:id', function(req, res){
 });
 
 ruut.post('/edit/:id', function(req, res) {
-  dbModel.Students.update(req.body ,{where: {id: req.params.id}});
-  .then( function(){
+  dbModel.Students.update({first_name:req.body.first_name,last_name:req.body.last_name,email:req.body.email},
+    {where:
+      {id: req.params.id}
+    }
+  )
+  .then(function(){
     res.redirect('/students');
-  });
-  .catch(err =>{
-    res.render('studentsEdit',{title :'Input Data Students Not Succes', errorMsg: err.message})
   });
 });
 
-
 //delete
 ruut.get('/delete/:id', function(req, res){
-    dbModel.Students.destroy({where: {id : req.params.id}})
-    .then( function(){
-  res.redirect('/Students');
+  dbModel.Students.destroy({where: {id : req.params.id}})
+  .then( function(){
+    res.redirect('/Students');
   })
 });
 
