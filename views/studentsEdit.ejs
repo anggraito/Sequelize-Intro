@@ -7,19 +7,17 @@
   <body>
   <center>
     <h1>STUDENT EDIT FORM</h1><br><br>
-    <form action="/students/edit/<%=data_student.id%>" method="POST">
+    <form action="/students/edit/<%=data_students.id%>" method="POST">
     First Name:<br>
-    <input type="text" name="first_name" value="<%=data_student.first_name %>">
+    <input type="text" name="first_name" value="<%=data_students.first_name %>">
     <br>
     Last Name:<br>
-    <input type="text" name="last_name" value="<%=data_student.last_name %>">
+    <input type="text" name="last_name" value="<%=data_students.last_name %>">
     <br>
     Email:<br>
-    <input type="text" name="email" value="<%=data_student.email %>">
+    <input type="text" name="email" value="<%=data_students.email %>">
     <br>
-    Jurusan: <br>
-    <input type="text" name="jurusan" value="<%=data_student.jurusan %>">
-    <br><br>
+    <br>
     <input type="submit" value="Submit">
   </form>
   </center>
