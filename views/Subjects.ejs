@@ -13,12 +13,14 @@
     <tr>
       <th>id</th>
       <th>Subject Name</th>
+      <th>Teacher</th>
       <th colspan='2'></th>
     </tr>
     <% data_subjects.forEach((subject, index )=>{%>
     <tr>
       <td><%= index + 1 %></td>
       <td><%= subject.subject_name %></td>
+      <td><%= subject.TeachersId %></td>
     </tr>
       <%})%>
     </table>
