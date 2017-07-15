@@ -19,8 +19,8 @@
     <br>
     Subject:<br>
     <select name="SubjectId">
-      <option value =""> -- SELECT SUBJECT -- </option>
-      <% data_teachers2.forEach(subj => { %>
+      <option value ="<%= data_teachers2.SubjectId%>"> </option>
+      <% data.forEach(subj => { %>
       <option value=" <%= subj.id%> "> <%= subj.subject_name %> </option>
       <% }) %>
     </select>
