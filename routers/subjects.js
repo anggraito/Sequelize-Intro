@@ -3,6 +3,8 @@ var theRout = express.Router();
 
 var dbModel = require('../models');
 
+const score = require('../helpers/score')
+
 // theRout.get('/', function(req, res){
 //   dbModel.Subject.findAll()
 //   .then (function(rows){
@@ -21,9 +23,9 @@ theRout.get('/', function(req, res){
       return new Promise( function (resolve, reject) {
         subject.getTeacher()
         .then( teacher => {
-          subject.first_name =[];
-          teacher.forEach(teachers => {
-            subject.first_name.push(teachers.dataValues.first_name+' '+teachers.dataValues.last_name)
+          subject.full_name =[];
+          teacher.forEach(t => {
+            subject.full_name.push(t.dataValues.first_name+' '+t.dataValues.last_name)
           })
           return resolve(subject);
         })
@@ -33,13 +35,9 @@ theRout.get('/', function(req, res){
 
     Promise.all(promiseSubject)
     .then( subject => {
-      console.log(subject);
       res.render('Subjects', {data_subjects: subject});
-    })
-    .catch(err => {
-      console.log(err);
-    })
-  })
+    });
+  });
 });
 
 theRout.get('/enrolledstudents/:id', function(req, res){
@@ -50,7 +48,8 @@ theRout.get('/enrolledstudents/:id', function(req, res){
     include: [{all:true}]
   })
   .then(function (rows){
-    res.render('enrolledstudent', {data_subjectstudent:rows})
+    let enrol = score(rows);
+    res.render('enrolledStudent', {data_subjectstudent:rows, scoreLetter: enrol})
   })
 });
 

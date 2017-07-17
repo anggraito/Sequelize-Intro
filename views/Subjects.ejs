@@ -15,18 +15,18 @@
       <th>id</th>
       <th>Subject Name</th>
       <th>Teacher</th>
-      <th colspan='2'></th>
+      <th>Action</th>
     </tr>
     <% data_subjects.forEach((subject, index )=>{%>
     <tr>
       <td><%= index + 1 %></td>
       <td><%= subject.subject_name %></td>
       <td>
-          <ol type="1">
-          <% subject.first_name.forEach(name =>{%>
-          <li> <%= name %> </li>
-          <%})%>
-          </ol>
+        <ol type="1">
+        <% subject.full_name.forEach(names =>{%>
+        <li> <%= names %> </li>
+        <%})%>
+        </ol>
       </td>
       <td><a href="/subjects/enrolledstudents/<%=subject.id%>">Enrolled Students</a></td>
     </tr>

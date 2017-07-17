@@ -5,29 +5,6 @@ var dbModel = require('../models');
 
 
 routing.get('/', function(req, res){
-  // dbModel.Teacher.findAll({order: [['first_name']]})
-  // .then (arrTeacher => {
-  //   let promiseTeacher = arrTeacher.map( teacher => {
-  //     return new Promise( function (resolve, reject) {
-  //       teacher.getSubject()
-  //       .then( subject => {
-  //         if (teacher.SubjectId == null) {
-  //           teacher.subject_name = 'unassigned';
-  //         } else {
-  //           teacher.subject_name = subject.subject_name;
-  //         }
-  //         return resolve(teacher);
-  //       })
-  //       .catch(err => reject (err));
-  //     });
-  //   });
-  //   Promise.all(promiseTeacher)
-  //   .then( teacher => {
-  //     teacher.forEach(p => {
-  //       res.render('Teachers', {data_teachers: teacher});
-  //     });
-  //   });
-  // });
   dbModel.Teacher.findAll({order: [['first_name']]})
   .then (arrTeacher => {
     let promise = arrTeacher.map(teacher => {
@@ -46,9 +23,7 @@ routing.get('/', function(req, res){
     });
     Promise.all(promise)
     .then(teacher =>{
-      teacher.forEach(p => {
-        res.render('Teachers', {data_teachers: teacher});
-      })
+      res.render('Teachers', {data_teachers: teacher});
     });
     //res.render('Teachers', {data_teachers: rows});
   });
