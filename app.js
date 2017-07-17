@@ -9,19 +9,17 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true}));
 
-app.get('/',function(req, res){
-  res.send('hallo');
-});
-
+var Index = require('./models/index');
 var Teacher = require('./models/teacher');
 var Subject = require('./models/subject');
 var Student = require('./models/students');
 
-
+const index = require('./routers/index');
 const teacher = require('./routers/teachers');
 const subject = require('./routers/subjects');
 const students = require('./routers/students');
 //
+app.use('/', index);
 app.use('/teachers', teacher);
 app.use('/subjects', subject);
 app.use('/Students', students);

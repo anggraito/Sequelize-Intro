@@ -32,23 +32,23 @@ routing.post('/add', function(req, res){
 });
 
 //edit form
-// routing.get('/edit/:id', function(req, res){
-//   dbModel.Teacher.findById(req.params.id)
-//   .then (function (rows){
-//     res.render('teachersEdit', {data_teachers2: rows});
-//   });
-// });
-//
-// routing.post('/edit/:id', function(req, res) {
-//   dbModel.Teacher.update({first_name:req.body.first_name,last_name:req.body.last_name,email:req.body.email, SubjectId:req.body.SubjectId},
-//     {where:
-//       {id: req.params.id}
-//     }
-//   )
-//   .then(function(){
-//     res.redirect('/teachers');
-//   });
-// });
+routing.get('/edit/:id', function(req, res){
+  dbModel.Teacher.findById(req.params.id)
+  .then (function (rows){
+    res.render('teachersEdit', {data_teachers2: rows});
+  });
+});
+
+routing.post('/edit/:id', function(req, res) {
+  dbModel.Teacher.update({first_name:req.body.first_name,last_name:req.body.last_name,email:req.body.email, SubjectId:req.body.SubjectId},
+    {where:
+      {id: req.params.id}
+    }
+  )
+  .then(function(){
+    res.redirect('/teachers');
+  });
+});
 
 //delete
 routing.get('/delete/:id', function(req, res){
