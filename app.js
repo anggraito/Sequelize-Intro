@@ -1,6 +1,7 @@
 const express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 
 var app = express();
 
@@ -8,6 +9,13 @@ app.set('view engine', 'ejs');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true}));
+
+app.use(session({
+  secret: 'anggraito',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { }
+}));
 
 var Index = require('./models/index');
 var Teacher = require('./models/teacher');

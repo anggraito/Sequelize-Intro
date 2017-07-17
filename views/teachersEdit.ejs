@@ -19,7 +19,15 @@
     <input type="email" name="email" value="<%=data_teachers2.email %>">
     <br>
     Subject:<br>
-
+    <select name = "SubjectId" >
+      <option value = "<%=data_teachers2.SubjectId %>" selected> <%= data_teachers2.SubjectId %>
+      </option>
+      <% data_subject2.forEach( cont => { %>
+      <option value ="<%= cont.id %>">
+      <%= cont.subject_name %>
+      </option>
+      <% }) %>
+    </select>
     <br>
     <br>
     <br>

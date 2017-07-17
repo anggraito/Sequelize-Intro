@@ -4,7 +4,7 @@ var ruut = express.Router();
 var dbModel = require('../models');
 
 ruut.get('/', function(req, res){
-  dbModel.Students.findAll()
+  dbModel.Students.findAll({order: [['first_name']]})
   .then (function(rows){
     res.render('Students', {data_students: rows});
   });
@@ -49,6 +49,23 @@ ruut.get('/delete/:id', function(req, res){
   dbModel.Students.destroy({where: {id : req.params.id}})
   .then( function(){
     res.redirect('/Students');
+  })
+});
+//add subject
+ruut.get('/addsubject/:id', function(req, res){
+  dbModel.Student.findById(req.params.id)
+  .then (function (rows){
+    Model.Subject.findAll()
+    .then (function (rows2){
+    res.render('studentAddSub', {data_student: rows, data_subject: rows2});
+  })
+   })
+ });
+
+ruut.post('/addsubject/:id', function(req, res) {
+  dbModel.StudentSubject.create({ StudentId: req.params.id, SubjectId: req.body.SubjectId})
+  .then( function(){
+  res.redirect('/Students');
   })
 });
 

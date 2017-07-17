@@ -21,7 +21,14 @@
     <tr>
       <td><%= index + 1 %></td>
       <td><%= subject.subject_name %></td>
-      <td><%= subject.TeachersId %></td>
+      <td>
+          <ol type="1">
+          <% subject.first_name.forEach(name =>{%>
+          <li> <%= name %> </li>
+          <%})%>
+          </ol>
+      </td>
+      <td><a href="/subjects/enrolledstudents/<%=subject.id%>">Enrolled Students</a></td>
     </tr>
       <%})%>
     </table>
