@@ -26,10 +26,18 @@ const index = require('./routers/index');
 const teacher = require('./routers/teachers');
 const subject = require('./routers/subjects');
 const students = require('./routers/students');
-//
+
+
 app.use('/', index);
-app.use('/teachers', teacher);
-app.use('/subjects', subject);
+// app.use((req, res, next) => {
+//   if (req.session.users) { // undefined
+//     next()
+//   } else {
+//     res.render('index', {msg: 'anda harus login'})
+//   }
+// });
+app.use('/Teachers', teacher);
+app.use('/Subjects', subject);
 app.use('/Students', students);
 
-app.listen(3002);
+app.listen(3003);

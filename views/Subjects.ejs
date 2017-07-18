@@ -12,7 +12,7 @@
   <center>
   <table>
     <tr>
-      <th>id</th>
+      <th>No.</th>
       <th>Subject Name</th>
       <th>Teacher</th>
       <th>Action</th>
@@ -22,13 +22,9 @@
       <td><%= index + 1 %></td>
       <td><%= subject.subject_name %></td>
       <td>
-        <ol type="1">
-        <% subject.full_name.forEach(names =>{%>
-        <li> <%= names %> </li>
-        <%})%>
-        </ol>
+      
       </td>
-      <td><a href="/subjects/enrolledstudents/<%=subject.id%>">Enrolled Students</a></td>
+      <td><a href="/subjects/<%=subject.id%>/enrolledstudents">Enrolled Students</a></td>
     </tr>
       <%})%>
     </table>

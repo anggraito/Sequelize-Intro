@@ -5,6 +5,15 @@ var dbModel = require('../models');
 
 const score = require('../helpers/score')
 
+
+// theRout.use((req, res, next) => {
+//   if (req.session.users.role == 'academic' || req.session.users.role == 'headmaster') {
+//     next()
+//   } else {
+//     res.send("Teacher can't acces this page!!")
+//   }
+// });
+
 // theRout.get('/', function(req, res){
 //   dbModel.Subject.findAll()
 //   .then (function(rows){
@@ -21,26 +30,27 @@ theRout.get('/', function(req, res){
   .then (arrSubject => {
     let promiseSubject = arrSubject.map( subject => {
       return new Promise( function (resolve, reject) {
-        subject.getTeacher()
-        .then( teacher => {
+        subject.getTeachers()
+        .then(teacher => {
           subject.full_name =[];
           teacher.forEach(t => {
             subject.full_name.push(t.dataValues.first_name+' '+t.dataValues.last_name)
           })
-          return resolve(subject);
+          return resolve(subject.full_name);
         })
         .catch(err => reject (err));
       });
     });
 
     Promise.all(promiseSubject)
-    .then( subject => {
-      res.render('Subjects', {data_subjects: subject});
+      .then( subject => {
+        res.render('Subjects', {data_subjects: subject});
     });
+    //.catch(err => { console.log(err);});
   });
 });
 
-theRout.get('/enrolledstudents/:id', function(req, res){
+theRout.get('/:id/enrolledstudents/', function(req, res){
   dbModel.StudentSubject.findAll({ order: [['Students', 'first_name']],
     where: {
       SubjectId: req.params.id
