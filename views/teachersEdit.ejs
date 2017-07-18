@@ -5,6 +5,7 @@
     <title></title>
   </head>
   <body>
+    <%- include layout/menu%>
   <center>
     <h1>STUDENT EDIT FORM</h1><br><br>
     <form action="/teachers/edit/<%=data_teachers2.id%>" method="POST">
@@ -18,10 +19,13 @@
     <input type="email" name="email" value="<%=data_teachers2.email %>">
     <br>
     Subject:<br>
-    <select name="SubjectId">
-      <option value =""> -- SELECT SUBJECT -- </option>
-      <% data_teachers2.forEach(subj => { %>
-      <option value=" <%= subj.id%> "> <%= subj.subject_name %> </option>
+    <select name = "SubjectId" >
+      <option value = "<%=data_teachers2.SubjectId %>" selected> <%= data_teachers2.SubjectId %>
+      </option>
+      <% data_subject2.forEach( cont => { %>
+      <option value ="<%= cont.id %>">
+      <%= cont.subject_name %>
+      </option>
       <% }) %>
     </select>
     <br>

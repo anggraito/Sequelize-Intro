@@ -5,6 +5,7 @@
     <title></title>
   </head>
   <body>
+    <%- include layout/menu%>
   <center>
     <h2>ADD NEW STUDENT</h2><br><br>
     <form action="/students/add" method="POST">
@@ -22,6 +23,14 @@
         Email Name:
       </p>
       <input type="email" name="email" value="">
+      <br>
+      <br>
+      <p>
+        Degree:
+      </p>
+      <input type="text" name="jurusan" value="">
+      <br>
+      <br>
       <br>
       <input type="submit" value="Submit">
   </form>

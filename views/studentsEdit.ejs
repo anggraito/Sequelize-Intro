@@ -5,6 +5,7 @@
     <title></title>
   </head>
   <body>
+    <%- include layout/menu%>
   <center>
     <h1>STUDENT EDIT FORM</h1><br><br>
     <form action="/students/edit/<%=data_students.id%>" method="POST">
@@ -16,6 +17,9 @@
     <br>
     Email:<br>
     <input type="text" name="email" value="<%=data_students.email %>">
+    <br>
+    Degree:<br>
+    <input type="text" name="jurusan" value="<%=data_students.jurusan %>">
     <br>
     <br>
     <input type="submit" value="Submit">

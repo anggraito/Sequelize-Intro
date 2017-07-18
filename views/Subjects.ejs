@@ -6,21 +6,25 @@
   </head>
 
   <body>
+    <%- include layout/menu%>
   <center><h3>Subject data</h3><center><br>
   <br><br>
   <center>
   <table>
     <tr>
-      <th>id</th>
+      <th>No.</th>
       <th>Subject Name</th>
       <th>Teacher</th>
-      <th colspan='2'></th>
+      <th>Action</th>
     </tr>
     <% data_subjects.forEach((subject, index )=>{%>
     <tr>
       <td><%= index + 1 %></td>
       <td><%= subject.subject_name %></td>
-      <td><%= subject.TeachersId %></td>
+      <td>
+      
+      </td>
+      <td><a href="/subjects/<%=subject.id%>/enrolledstudents">Enrolled Students</a></td>
     </tr>
       <%})%>
     </table>

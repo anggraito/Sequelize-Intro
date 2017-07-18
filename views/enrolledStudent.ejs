@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+      <%- include layout/menu%>
+  <center>
+    <h1>  <%=data_subjectstudent[0].Subject.subject_name%></h1>
+    <a href="/subjects">back to Subject List</a> <br> <br>
+    <table>
+      <tr>
+        <th>No</th>
+        <th>Nama</th>
+        <th>Score</th>
+        <th></th>
+        <th colspan='2'></th>
+      </tr>
+      <% let i =0%>
+      <% data_subjectstudent.forEach((ss, index) =>{%>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= ss.Students.first_name+' '+ss.Students.last_name %></td>
+        <td>
+        <% if (ss.Score == null) { %>
+        <td> <a href="/subjects/givescore/<%=ss.StudentId%>/<%=ss.SubjectId%>">Give Score</a></td>
+        <% } else {%>
+        <td><%=ss.Score%></td>
+        <%}%>
+        <td><%= scoreLetter[i]%> </td>
+        <% i++%>
+        </tr>
+          <%})%>
+        </table>
+      <br>
+  </form>
+  </center>
+  </body>
+</html>
